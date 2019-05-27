@@ -1,0 +1,10 @@
+moonstarerをastronomerに変更することはできた。
+また、辞書の53200番目あたりに、quから始まる単語が乗っている。
+
+quarrelsome
+quarried
+quarries
+quarry
+quarrying
+
+など。これらの単語をランダムに入れても成功した。
