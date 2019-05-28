@@ -10,7 +10,7 @@ public class STEP01 {
 	Scanner sc = new Scanner(System.in);
 	String word = sc.next();
 	sus = doInput(word);
-	sortWord(sus);
+	Collections.sort(sus);
 
 	File file = new File("dictionary.words");
 	try {
@@ -31,7 +31,7 @@ public class STEP01 {
 		ArrayList<String> p = doInput(dicWord);
 		dictionary.add(p);
 		ArrayList<String> q = doInput(dicWord);
-		sortWord(q);
+		Collections.sort(q);
 		dictionary2.add(q);
 		num++;
 	    }	      
@@ -73,10 +73,8 @@ public class STEP01 {
     private static ArrayList<String> doInput(String s) {
 	ArrayList<String> c = new ArrayList<String>();
 	for (int i = 0; i < s.length(); i++) {
-	    /*大文字は小文字にしてabc順にしたいけど、
-	     * 文字コードよくわからない。
-	     *環境によって数値変わってしまったりしない？
-	     *ASCIIコードでAは65でaは97だった
+	    /*今回はアルファベットのアナグラムでASCIIコードの範囲内なので
+	     *気を使う必要がない。日本語だったらエンコーディング指定に注意
 	     */
 
 	    char p = ( (int)s.charAt(i) < 97 ) ? (char)(s.charAt(i) + 32) : s.charAt(i);
@@ -100,30 +98,4 @@ public class STEP01 {
 	return c;
 	
     }
-
-    
-    private static void sortWord(ArrayList<String> c) {	    
-	//このccの中身の並び替えもっとうまくできませんか？PriorityQueueとか。
-	for (int i = 0; i < c.size()-1; i++) {
-	    for (int j = i + 1; j < c.size(); j++) {	
-		// System.out.println("i= " + (int)cc.get(i) + "j=  " +(int)cc.get(j));
-		if(c.get(i).charAt(0) > c.get(j).charAt(0)) {
-		    String temp = c.get(i);
-		    c.set(i, c.get(j));
-		    c.set(j, temp);
-		}		  
-	    }
-	}
-
-	/*//表示
-	System.out.println("sortWord:");
-	for (int i = 0; i < c.size(); i++) {
-	    System.out.print(c.get(i)+" ");
-	}
-	System.out.println();
-	*/
-	
-
-	
-    } 
 }
